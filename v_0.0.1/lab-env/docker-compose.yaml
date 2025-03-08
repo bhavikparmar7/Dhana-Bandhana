@@ -1,0 +1,17 @@
+version: '3'
+services:
+  avgraha-service:
+    container_name: avgraha-run
+    build: ./
+    ports:
+      - "8181:8181"
+    depends_on:
+      - mongo-service
+
+  mongo-service:
+    container_name: mongo-run
+    image: mongo
+    ports:
+      - "37017:27017"
+    volumes:
+      - /db-data:/data/db
